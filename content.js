@@ -47,6 +47,8 @@ function displayPopups() {
       const firstName = firstNameElement ? firstNameElement.textContent.trim() : 'User';
       // Listen for the message from the injected script
       window.addEventListener('message', (event) => {
+        if (event.origin !== "https://bo42corpsysbhp.inbcu.com") // SAFE: origin checked
+        return;
           if (event.data.type && event.data.type === 'FROM_PAGE') {
               // This is the data from the injected script
               let reportName = event.data.reportName.split('(')[0].trim();

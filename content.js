@@ -734,6 +734,8 @@ function injectScriptAndSetupListener() {
   console.log('Running Script Listener 2', reportName);
   // Set up the event listener for the injected script
   window.top.addEventListener('message', (event) => {
+    if (event.origin !== "https://bo42corpsysbhp.inbcu.com") // SAFE: origin checked
+        return;
     console.log('Running Script Listener 3', reportName);
       if (event.data.type && event.data.type === 'FROM_PAGE') {
         console.log('Running Script Listener 4', reportName);
